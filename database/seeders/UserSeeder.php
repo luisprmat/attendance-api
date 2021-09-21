@@ -14,14 +14,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
+        User::create([
             'name' => 'Luis Parrado',
-            'email' => 'luisprmat@gmail.com'
+            'email' => 'luisprmat@gmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
 
-        User::factory()->create([
+        User::create([
             'name' => 'Marco Vargas',
-            'email' => 'marco@hotmail.com'
+            'email' => 'marco@hotmail.com',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ]);
     }
 }

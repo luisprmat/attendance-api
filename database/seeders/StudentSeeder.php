@@ -15,19 +15,19 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        $course = Course::factory()->create(['name' => '7A']);
+        $course = Course::create(['name' => '7A']);
         Student::create([
             'name' => 'Leonel Vargas',
             'course_id' => $course->id
         ]);
 
-        $course = Course::factory()->create(['name' => '8B']);
+        $course = Course::create(['name' => '8B']);
         Student::create([
             'name' => 'Pablo Hernández',
             'course_id' => $course->id
         ]);
 
-        $course = Course::factory()->create(['name' => '10A']);
+        $course = Course::create(['name' => '10A']);
         Student::create([
             'name' => 'Pepito Pérez',
             'course_id' => $course->id
