@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -33,7 +34,7 @@ class AuthController extends Controller
 
     public function getAuthUser(Request $request)
     {
-        return $request->user();
+        return UserResource::make($request->user());
     }
 
     public function logout(Request $request)
