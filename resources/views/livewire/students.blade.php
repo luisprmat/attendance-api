@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <x-table>
                     <div class="p-4 flex flex-col justify-items-start sm:flex-row sm:items-center sm:justify-between">
-                        <x-jet-input type="text" placeholder="Buscar estudiante..." wire:model="search"
+                        <x-jet-input type="search" placeholder="Buscar estudiante..." wire:model="search"
                             class="sm:flex-1 mb-4 sm:mb-0 sm:mr-2" />
                         <x-button type="button" wire:click="$set('open', true)" color="indigo">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
