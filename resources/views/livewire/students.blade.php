@@ -53,13 +53,20 @@
                                         <div class="text-sm text-gray-900">{{ $student->course->name }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <span wire:click="edit({{ $student }})" class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</span>
-                                        <a href="#" class="ml-4 text-red-600 hover:text-red-900">Eliminar</a>
+                                        <span wire:click="edit({{ $student }})"
+                                            class="text-indigo-600 hover:text-indigo-900 cursor-pointer">Editar</span>
+                                        <span wire:click="destroy({{ $student }})"
+                                            class="ml-4 text-red-600 hover:text-red-900 cursor-pointer">Eliminar</span>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    @if ($students->hasMorePages())
+                        <div class="p-4">
+                            {{ $students->links() }}
+                        </div>
+                    @endif
                 </x-table>
             </div>
         </div>
@@ -132,4 +139,25 @@
             </x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>
+
+    <!-- Delete Student Confirmation Modal -->
+    <x-jet-confirmation-modal wire:model="confirmingStudentDeletion">
+        <x-slot name="title">
+            Eliminar estudiante
+        </x-slot>
+
+        <x-slot name="content">
+            ¿Está seguro de borrar el estudiante '{{ $this->student->name }}'? Esta acción no se puede revertir
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('confirmingStudentDeletion')" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+
+            <x-jet-danger-button class="ml-2" wire:click="deleteStudent" wire:loading.attr="disabled">
+                {{ __('Delete') }}
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-confirmation-modal>
 </div>

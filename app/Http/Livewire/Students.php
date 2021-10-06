@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Course;
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Students extends Component
 {
+    use WithPagination;
+
     public $openCreate = false, $openEdit = false;
 
     public $search = '';
@@ -15,6 +18,8 @@ class Students extends Component
     public $name = '', $course_id = '';
 
     public $courses, $student;
+
+    public $confirmingStudentDeletion = false;
 
     protected $rules = [
         'student.name' => ['required', 'min:3'],
@@ -67,12 +72,26 @@ class Students extends Component
         $this->render();
     }
 
+    public function destroy(Student $student)
+    {
+        $this->student = $student;
+        $this->confirmingStudentDeletion = true;
+    }
+
+    public function deleteStudent()
+    {
+        $this->student->delete();
+        $this->confirmingStudentDeletion = false;
+        $this->student = new Student;
+        $this->render();
+    }
+
     public function render()
     {
         $students = Student::with('course')
             ->where('name', 'LIKE', "%{$this->search}%")
             ->orderBy('course_id')
-            ->get();
+            ->paginate(8);
 
         return view('livewire.students', compact('students'));
     }
