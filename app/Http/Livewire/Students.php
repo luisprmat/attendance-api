@@ -11,9 +11,15 @@ class Students extends Component
 {
     use WithPagination;
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'perPage' => ['except' => '8']
+    ];
+
     public $openCreate = false, $openEdit = false;
 
     public $search = '';
+    public $perPage = '8';
 
     public $name = '', $course_id = '';
 
