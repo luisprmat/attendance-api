@@ -63,9 +63,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                            {{ $students->links() }}
-                        </div>
+                        @if ($students->hasPages())
+                            <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+                                {{ $students->links() }}
+                            </div>
+                        @endif
                     @else
                         <div class="bg-white px-4 py-3 border-t border-gray-200 text-gray-500 sm:px-6">
                             No hay resultados para la búsqueda "{{ $search }}" en la página {{ $page }} al mostrar {{ $perPage }} por página.
