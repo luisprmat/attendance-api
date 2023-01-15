@@ -8,3 +8,6 @@ php artisan config:cache
 
 echo "Caching routes..."
 php artisan route:cache
+
+echo "Publishing Livewire aasets"
+php artisan livewire:publish --assets
