@@ -13,10 +13,8 @@
                         <x-jet-input type="search" placeholder="Buscar estudiante..." wire:model="search"
                             class="sm:flex-1 mb-4 sm:mb-0 sm:mr-2" />
                         <x-button type="button" wire:click="$set('openCreate', true)" color="indigo">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
                             </svg>
                             Nuevo estudiante
                         </x-button>
@@ -79,7 +77,7 @@
     </div>
 
     {{-- Modal for create Student --}}
-    <x-jet-dialog-modal wire:model="openCreate">
+    <x-dialog-modal wire:model="openCreate">
         <x-slot name="title">
             Nuevo estudiante
         </x-slot>
@@ -110,10 +108,10 @@
                 Guardar
             </x-jet-button>
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-dialog-modal>
 
     {{-- Modal for edit Student --}}
-    <x-jet-dialog-modal wire:model="openEdit">
+    <x-dialog-modal wire:model="openEdit">
         <x-slot name="title">
             Editar estudiante
         </x-slot>
@@ -144,7 +142,7 @@
                 Guardar
             </x-jet-button>
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-dialog-modal>
 
     <!-- Delete Student Confirmation Modal -->
     <x-jet-confirmation-modal wire:model="confirmingStudentDeletion">
