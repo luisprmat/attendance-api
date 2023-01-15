@@ -11,3 +11,9 @@ php artisan route:cache
 
 # echo "Running migrations..."
 # php artisan migrate --force
+
+echo "Install javascript dependencies"
+npm ci
+
+echo "Building assets"
+npm run build
